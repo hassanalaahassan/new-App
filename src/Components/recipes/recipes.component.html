@@ -1,0 +1,13 @@
+<div class="grid grid-cols-12 gap-2">
+
+  <div class="col-span-12">
+    <app-home-header (searchTerm)="filterRecipes($event)"/>
+  </div>
+
+  @for (recipe of recipes; track recipe.id) {
+    <div class="col-span-full md:col-span-6 lg:col-span-4">
+      <app-recipe-card (showedRecipe)="receiveRecipeFromChild($event)" [recipe]="recipe"/>
+    </div>
+  }
+  <app-recipe-detailes (closeModel)="toggleModel()" [isShowed]="showModel" [recipe]="this.recipeDetailes"/>
+</div>
